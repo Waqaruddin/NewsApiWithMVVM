@@ -13,10 +13,18 @@ import kotlinx.android.synthetic.main.row_adapter_news.view.*
 class AdapterNews (var mContext: Context, var mList:ArrayList<Article>):RecyclerView.Adapter<AdapterNews.MyViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+//
+//        //var inflater = LayoutInflater.from(parent.context)
+//        var binding = RowAdapterNewsBinding.inflate(LayoutInflater.from(parent.context))
+//        return MyViewHolder(binding)
 
-        val inflater = LayoutInflater.from(parent.context)
-        val binding = RowAdapterNewsBinding.inflate(inflater)
-        return MyViewHolder(binding)
+        var view = LayoutInflater.from(mContext).inflate(R.layout.row_adapter_news, parent, false)
+        return MyViewHolder(view)
+
+//        var inflater = LayoutInflater.from(parent.context)
+//        var binding = RowAdapterNewsBinding.inflate(inflater)
+//        return MyViewHolder(binding)
+
 
     }
 
@@ -35,10 +43,13 @@ class AdapterNews (var mContext: Context, var mList:ArrayList<Article>):Recycler
 
     }
 
-    inner class MyViewHolder(mBinding:RowAdapterNewsBinding):RecyclerView.ViewHolder(mBinding.root){
+    inner class MyViewHolder( itemView:View):RecyclerView.ViewHolder(itemView){
         fun bind(article:Article){
             itemView.text_view_title.text = article.title
             itemView.text_view_desc.text = article.description
+//            mBinding.textViewTitle.text = article.title
+//            mBinding.textViewDesc.text = article.description
+
         }
     }
 }

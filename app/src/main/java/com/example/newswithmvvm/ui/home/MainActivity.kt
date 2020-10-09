@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity(), NewsListener {
 
     override fun onStarted() {
 
+        Toast.makeText(this, "Starting now..", Toast.LENGTH_SHORT).show()
 
     }
 
