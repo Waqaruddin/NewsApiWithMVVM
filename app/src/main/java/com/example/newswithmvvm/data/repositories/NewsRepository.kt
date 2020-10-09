@@ -24,7 +24,6 @@ class NewsRepository{
                 ) {
                     if(response.isSuccessful){
                         newsResponse.value = response.body()?.articles
-                        //Log.d("abc", response.body().toString() )
                         Log.d("abc", response.body()!!.articles[0].title )
 
                     }
