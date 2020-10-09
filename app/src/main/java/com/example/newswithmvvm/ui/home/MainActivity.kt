@@ -17,21 +17,23 @@ import com.example.newswithmvvm.ui.auth.NewsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NewsListener {
+    lateinit var mBinding:ActivityMainBinding
     var mList:ArrayList<Article> = ArrayList()
     private var adapterNews:AdapterNews? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
        // setContentView(R.layout.activity_main)
 
-        val binding:ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        val viewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
-        binding.viewModel = viewModel
-        viewModel.newsListener = this
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         init()
     }
 
     private fun init() {
+
+        val viewModel = ViewModelProviders.of(this).get(NewsViewModel::class.java)
+        mBinding.viewModel = viewModel
+        viewModel.newsListener = this
 
         adapterNews = AdapterNews(this, mList)
         recycler_view.layoutManager = LinearLayoutManager(this)

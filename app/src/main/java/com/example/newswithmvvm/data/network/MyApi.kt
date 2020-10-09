@@ -11,17 +11,18 @@ import retrofit2.http.GET
 
 interface MyApi {
 
-    @GET("everything?domains=wsj.com&apiKey=7ba67bce9dfb416bac6378b4845e3f80")
+    @GET("top-headlines?country=us&category=business&apiKey=a1c63f6fa6a645088799c895f54f5ed6")
     fun getNews(): Call<NewsResponse>
 
 
     companion object{
         operator fun invoke():MyApi{
             return Retrofit.Builder()
+                .baseUrl("http://newsapi.org/v2/")
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl(Config.BASE_URL)
                 .build()
                 .create(MyApi::class.java)
         }
     }
 }
+
